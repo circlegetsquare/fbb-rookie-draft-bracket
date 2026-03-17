@@ -1,0 +1,255 @@
+{# ═══════════════════════════════════════════════════════ #}
+{# MACRO: Render a single matchup card                    #}
+{# ═══════════════════════════════════════════════════════ #}
+{% macro render_matchup(m, rnd=None) %}
+<div class="matchup-card {{ 'completed' if m.is_complete else ('live' if m.is_live else 'pending') }}">
+
+  {% if m.label or m.is_live %}
+  <div class="matchup-label">
+    {{ m.label }}
+    {% if m.is_live %}<span class="live-badge">LIVE</span>{% endif %}
+  </div>
+  {% endif %}
+
+  {# Team A row #}
+  {% set has_result = m.is_complete or m.is_live %}
+  <div class="team-row {{ 'winner' if has_result and m.winner_name == m.team_a_name else ('loser' if has_result and m.loser_name == m.team_a_name else '') }}">
+    <div class="team-seed">{{ m.team_a_seed }}</div>
+    <div class="team-name" title="{{ m.team_a_name }}">{{ m.team_a_name }}</div>
+    <div class="team-score">{{ '%d-%d-%d'|format(m.wins_a, m.wins_b, m.ties) if m.wins_a is not none else '–' }}</div>
+  </div>
+
+  {# Team B row #}
+  <div class="team-row {{ 'winner' if has_result and m.winner_name == m.team_b_name else ('loser' if has_result and m.loser_name == m.team_b_name else '') }}">
+    <div class="team-seed">{{ m.team_b_seed }}</div>
+    <div class="team-name" title="{{ m.team_b_name }}">{{ m.team_b_name }}</div>
+    <div class="team-score">{{ '%d-%d-%d'|format(m.wins_b, m.wins_a, m.ties) if m.wins_b is not none else '–' }}</div>
+  </div>
+
+  {% if m.is_tiebreak %}
+  <div class="tiebreak-badge">Tiebreak: better seed</div>
+  {% endif %}
+
+  {% if m.is_complete and not m.espn_matched %}
+  <div class="computed-badge">Computed from raw stats</div>
+  {% endif %}
+
+  {# Two-week progress indicator #}
+  {% if rnd and rnd.is_two_week and not m.is_complete and rnd.week1_progress %}
+    {% for p in rnd.week1_progress %}
+      {% if p.team_a_name == m.team_a_name and p.team_b_name == m.team_b_name %}
+      <div class="progress-bar-container">
+        <div class="progress-label">{{ p.week_label }}: {{ p.wins_a }}-{{ p.wins_b }}-{{ p.ties }}</div>
+        <div class="progress-dots">
+          <div class="progress-dot filled"></div>
+          <div class="progress-dot"></div>
+        </div>
+      </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {# Category detail expandable #}
+  {% if m.details %}
+  <div class="cat-details">
+    {% for cat, score_a, score_b, result in m.details %}
+    {% set total = score_a + score_b if score_a + score_b > 0 else 1 %}
+    {% set pct_a = (score_a / total * 100)|round(1) %}
+    {% set pct_b = (score_b / total * 100)|round(1) %}
+    <div class="cat-row">
+      <div class="cat-name">{{ cat }}</div>
+      <div class="cat-bar left">
+        <div class="cat-bar-fill {{ result|lower if result == 'W' else ('loss' if result == 'L' else 'tie') }}"
+             style="width: {{ pct_a }}%"></div>
+      </div>
+      <div class="cat-val">{{ '%.3f'|format(score_a) if cat in ['FG%', 'FT%'] else score_a|int }}</div>
+      <div class="cat-result {{ result }}">{{ result }}</div>
+      <div class="cat-val right">{{ '%.3f'|format(score_b) if cat in ['FG%', 'FT%'] else score_b|int }}</div>
+      <div class="cat-bar right">
+        <div class="cat-bar-fill {{ 'win' if result == 'L' else ('loss' if result == 'W' else 'tie') }}"
+             style="width: {{ pct_b }}%"></div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <button class="cat-toggle">Categories <span class="arrow">&#x25BC;</span></button>
+  {% elif not m.is_complete %}
+  <div class="pending-label">{{ 'In Progress' if rnd and rnd.is_two_week and rnd.week1_progress else 'Pending' }}</div>
+  {% endif %}
+
+</div>
+{% endmacro %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coach Norman Dale Memorial League Rookie Draft Bracket — {{ season }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    /* Inline critical loader styles for instant display */
+    .loading-overlay {
+      display: flex;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #0a0e14;
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .loading-spinner {
+      width: 48px;
+      height: 48px;
+      border: 3px solid #243040;
+      border-top-color: #f59e0b;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    .loading-text {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #8899aa;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+  <!-- Loading Overlay (shows immediately) -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+    <div class="loading-text" id="loadingText">Loading Data...</div>
+  </div>
+
+  <header class="header">
+    <div class="header-top">
+      <div>
+        <h1>Coach Norman Dale Memorial League <span>Rookie Draft Bracket</span></h1>
+        <p class="header-subtitle">{{ season }} Season &middot; Seeds 5–12</p>
+      </div>
+      <div style="display:flex; align-items:center; gap:1rem;">
+        <span class="header-meta">League {{ league_id }}</span>
+        <a href="/refresh" class="refresh-btn">&#x21bb; Refresh</a>
+      </div>
+    </div>
+  </header>
+
+  {# ── Seed chips ── #}
+  <div class="seedings">
+    {% for t in bracket.teams %}
+    <div class="seed-chip">
+      <span class="num">{{ t.seed }}</span>
+      <span>{{ t.name }}</span>
+      <span class="record">{{ t.record }}</span>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="bracket-container">
+
+    {# ═══════════════════════════════════════════ #}
+    {# Round 1                                     #}
+    {# ═══════════════════════════════════════════ #}
+    <div class="round-section">
+      {% if bracket.rounds|length >= 1 %}
+      {% set r1 = bracket.rounds[0] %}
+      <div class="round-header">Round 1 <span class="week">{{ r1.week_label }} &middot; {{ r1.duration_label }}</span></div>
+      <div class="matchup-grid">
+        {% for m in r1.matchups %}
+        {{ render_matchup(m) }}
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+    {# ═══════════════════════════════════════════ #}
+    {# Round 2                                     #}
+    {# ═══════════════════════════════════════════ #}
+    <div class="round-section">
+      {% if bracket.rounds|length >= 2 %}
+      {% set r2 = bracket.rounds[1] %}
+      <div class="round-header">Round 2 <span class="week">{{ r2.week_label }} &middot; {{ r2.duration_label }}</span></div>
+      <div class="matchup-grid">
+        {% for m in r2.matchups %}
+        {{ render_matchup(m) }}
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="round-header">Round 2 <span class="week">Week 21 &middot; 1-week matchup</span></div>
+      <div class="matchup-grid">
+        <div class="matchup-card pending"><div class="pending-label">Awaiting Round 1</div></div>
+        <div class="matchup-card pending"><div class="pending-label">Awaiting Round 1</div></div>
+        <div class="matchup-card pending"><div class="pending-label">Awaiting Round 1</div></div>
+        <div class="matchup-card pending"><div class="pending-label">Awaiting Round 1</div></div>
+      </div>
+      {% endif %}
+    </div>
+
+    {# ═══════════════════════════════════════════ #}
+    {# Finals                                      #}
+    {# ═══════════════════════════════════════════ #}
+    <div class="round-section">
+      {% if bracket.rounds|length >= 3 %}
+      {% set r3 = bracket.rounds[2] %}
+      <div class="round-header">Finals <span class="week">{{ r3.week_label }} &middot; {{ r3.duration_label }}</span></div>
+      <div class="matchup-grid">
+        {% for m in r3.matchups %}
+        {{ render_matchup(m, r3) }}
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="round-header">Finals <span class="week">Weeks 22-23 &middot; 2-week matchup</span></div>
+      <div class="matchup-grid">
+        <div class="matchup-card pending"><div class="pending-label">Awaiting Round 2</div></div>
+        <div class="matchup-card pending"><div class="pending-label">Awaiting Round 2</div></div>
+        <div class="matchup-card pending"><div class="pending-label">Awaiting Round 2</div></div>
+        <div class="matchup-card pending"><div class="pending-label">Awaiting Round 2</div></div>
+      </div>
+      {% endif %}
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <span>ESPN League {{ league_id }} &middot; {{ season }}</span>
+    <span>Data cached {{ cache_age }}s ago &middot; Auto-refreshes every 5 min</span>
+  </footer>
+
+  <script>
+    // Hide loader once page is fully loaded
+    window.addEventListener('load', function() {
+      document.getElementById('loadingOverlay').classList.add('hidden');
+    });
+
+    document.addEventListener('click', function(e) {
+      const toggle = e.target.closest('.cat-toggle');
+      if (!toggle) return;
+      const card = toggle.closest('.matchup-card');
+      const details = card.querySelector('.cat-details');
+      if (details) {
+        details.classList.toggle('open');
+        card.classList.toggle('expanded');
+      }
+    });
+
+    // Loading spinner for refresh
+    document.addEventListener('click', function(e) {
+      const refreshBtn = e.target.closest('.refresh-btn');
+      if (!refreshBtn) return;
+      e.preventDefault();
+      refreshBtn.classList.add('loading');
+      const overlay = document.getElementById('loadingOverlay');
+      document.getElementById('loadingText').textContent = 'Refreshing Data...';
+      overlay.classList.add('transparent');
+      overlay.classList.remove('hidden');
+      window.location.href = refreshBtn.href;
+    });
+  </script>
+
+</body>
+</html>
