@@ -86,15 +86,41 @@
       return Math.floor(val);
     }
 
-    function formatTimeAgo(timestamp) {
-      const seconds = Math.floor(Date.now() / 1000) - timestamp;
-      if (seconds < 60) return `${seconds}s ago`;
-      const minutes = Math.floor(seconds / 60);
-      if (minutes < 60) return `${minutes}m ago`;
-      const hours = Math.floor(minutes / 60);
-      if (hours < 24) return `${hours}h ago`;
-      const days = Math.floor(hours / 24);
-      return `${days}d ago`;
+    function formatLastUpdated(timestamp) {
+      const date = new Date(timestamp * 1000);
+      const now = new Date();
+      const diffMs = now - date;
+      const diffMins = Math.floor(diffMs / 60000);
+
+      // Format relative time
+      let relativeTime;
+      if (diffMins < 1) {
+        relativeTime = 'just now';
+      } else if (diffMins === 1) {
+        relativeTime = '1 minute ago';
+      } else if (diffMins < 60) {
+        relativeTime = `${diffMins} minutes ago`;
+      } else {
+        const diffHours = Math.floor(diffMins / 60);
+        if (diffHours === 1) {
+          relativeTime = '1 hour ago';
+        } else if (diffHours < 24) {
+          relativeTime = `${diffHours} hours ago`;
+        } else {
+          const diffDays = Math.floor(diffHours / 24);
+          relativeTime = diffDays === 1 ? '1 day ago' : `${diffDays} days ago`;
+        }
+      }
+
+      // Format absolute time in user's local timezone
+      const timeStr = date.toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true,
+        timeZoneName: 'short'
+      });
+
+      return `Last Updated ${relativeTime} at ${timeStr}`;
     }
 
     function renderMatchup(m, rnd) {
@@ -239,8 +265,7 @@
       document.getElementById('footerInfo').textContent = `ESPN League ${league_id} · ${season}`;
 
       // Update cache info
-      const timeAgo = formatTimeAgo(last_updated);
-      document.getElementById('cacheInfo').textContent = `Last updated ${timeAgo}`;
+      document.getElementById('cacheInfo').textContent = formatLastUpdated(last_updated);
 
       // Render seed chips
       const seedingsEl = document.getElementById('seedings');
