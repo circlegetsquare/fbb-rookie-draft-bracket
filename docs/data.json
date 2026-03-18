@@ -1,0 +1,639 @@
+{
+  "bracket": {
+    "teams": [
+      {
+        "name": "Steve Blake's Sparring Partner",
+        "seed": 5,
+        "wins": 84,
+        "losses": 67,
+        "ties": 1,
+        "record": "84-67-1"
+      },
+      {
+        "name": "Sam Perkins Restaurant",
+        "seed": 6,
+        "wins": 83,
+        "losses": 66,
+        "ties": 3,
+        "record": "83-66-3"
+      },
+      {
+        "name": "You Can't Randle the Truth",
+        "seed": 7,
+        "wins": 83,
+        "losses": 67,
+        "ties": 2,
+        "record": "83-67-2"
+      },
+      {
+        "name": "Meatwood Flac",
+        "seed": 8,
+        "wins": 83,
+        "losses": 69,
+        "ties": 0,
+        "record": "83-69-0"
+      },
+      {
+        "name": "Day to Day",
+        "seed": 9,
+        "wins": 67,
+        "losses": 83,
+        "ties": 2,
+        "record": "67-83-2"
+      },
+      {
+        "name": "ExKuz Me?",
+        "seed": 10,
+        "wins": 67,
+        "losses": 84,
+        "ties": 1,
+        "record": "67-84-1"
+      },
+      {
+        "name": "Theres 5 Dalen Terrys Out There",
+        "seed": 11,
+        "wins": 49,
+        "losses": 102,
+        "ties": 1,
+        "record": "49-102-1"
+      },
+      {
+        "name": "3-ballz in Simmer Sauce",
+        "seed": 12,
+        "wins": 43,
+        "losses": 107,
+        "ties": 2,
+        "record": "43-107-2"
+      }
+    ],
+    "rounds": [
+      {
+        "number": 1,
+        "weeks": [
+          20
+        ],
+        "matchups": [
+          {
+            "team_a_name": "Steve Blake's Sparring Partner",
+            "team_a_seed": 5,
+            "team_b_name": "3-ballz in Simmer Sauce",
+            "team_b_seed": 12,
+            "wins_a": 4,
+            "wins_b": 4,
+            "ties": 0,
+            "winner_name": "Steve Blake's Sparring Partner",
+            "loser_name": "3-ballz in Simmer Sauce",
+            "details": [
+              [
+                "PTS",
+                449.0,
+                518.0,
+                "L"
+              ],
+              [
+                "BLK",
+                25.0,
+                10.0,
+                "W"
+              ],
+              [
+                "STL",
+                33.0,
+                27.0,
+                "W"
+              ],
+              [
+                "AST",
+                108.0,
+                114.0,
+                "L"
+              ],
+              [
+                "REB",
+                206.0,
+                169.0,
+                "W"
+              ],
+              [
+                "3PM",
+                39.0,
+                47.0,
+                "L"
+              ],
+              [
+                "FG%",
+                0.49722222222222223,
+                0.5129682997118156,
+                "L"
+              ],
+              [
+                "FT%",
+                0.7761194029850746,
+                0.7718120805369127,
+                "W"
+              ]
+            ],
+            "is_complete": true,
+            "is_live": false,
+            "is_tiebreak": true,
+            "espn_matched": true,
+            "label": "",
+            "week_label": ""
+          },
+          {
+            "team_a_name": "Sam Perkins Restaurant",
+            "team_a_seed": 6,
+            "team_b_name": "Theres 5 Dalen Terrys Out There",
+            "team_b_seed": 11,
+            "wins_a": 5,
+            "wins_b": 3,
+            "ties": 0,
+            "winner_name": "Sam Perkins Restaurant",
+            "loser_name": "Theres 5 Dalen Terrys Out There",
+            "details": [
+              [
+                "PTS",
+                481.0,
+                519.0,
+                "L"
+              ],
+              [
+                "BLK",
+                7.0,
+                19.0,
+                "L"
+              ],
+              [
+                "STL",
+                31.0,
+                21.0,
+                "W"
+              ],
+              [
+                "AST",
+                100.0,
+                89.0,
+                "W"
+              ],
+              [
+                "REB",
+                146.0,
+                149.0,
+                "L"
+              ],
+              [
+                "3PM",
+                45.0,
+                43.0,
+                "W"
+              ],
+              [
+                "FG%",
+                0.5103857566765578,
+                0.49340369393139843,
+                "W"
+              ],
+              [
+                "FT%",
+                0.8598130841121495,
+                0.7669172932330827,
+                "W"
+              ]
+            ],
+            "is_complete": true,
+            "is_live": false,
+            "is_tiebreak": false,
+            "espn_matched": true,
+            "label": "",
+            "week_label": ""
+          },
+          {
+            "team_a_name": "You Can't Randle the Truth",
+            "team_a_seed": 7,
+            "team_b_name": "ExKuz Me?",
+            "team_b_seed": 10,
+            "wins_a": 7,
+            "wins_b": 1,
+            "ties": 0,
+            "winner_name": "You Can't Randle the Truth",
+            "loser_name": "ExKuz Me?",
+            "details": [
+              [
+                "PTS",
+                559.0,
+                431.0,
+                "W"
+              ],
+              [
+                "BLK",
+                17.0,
+                7.0,
+                "W"
+              ],
+              [
+                "STL",
+                34.0,
+                21.0,
+                "W"
+              ],
+              [
+                "AST",
+                135.0,
+                109.0,
+                "W"
+              ],
+              [
+                "REB",
+                159.0,
+                117.0,
+                "W"
+              ],
+              [
+                "3PM",
+                59.0,
+                40.0,
+                "W"
+              ],
+              [
+                "FG%",
+                0.5259067357512953,
+                0.46319018404907975,
+                "W"
+              ],
+              [
+                "FT%",
+                0.7966101694915254,
+                0.8165137614678899,
+                "L"
+              ]
+            ],
+            "is_complete": true,
+            "is_live": false,
+            "is_tiebreak": false,
+            "espn_matched": true,
+            "label": "",
+            "week_label": ""
+          },
+          {
+            "team_a_name": "Meatwood Flac",
+            "team_a_seed": 8,
+            "team_b_name": "Day to Day",
+            "team_b_seed": 9,
+            "wins_a": 6,
+            "wins_b": 1,
+            "ties": 1,
+            "winner_name": "Meatwood Flac",
+            "loser_name": "Day to Day",
+            "details": [
+              [
+                "PTS",
+                600.0,
+                433.0,
+                "W"
+              ],
+              [
+                "BLK",
+                17.0,
+                21.0,
+                "L"
+              ],
+              [
+                "STL",
+                28.0,
+                28.0,
+                "T"
+              ],
+              [
+                "AST",
+                147.0,
+                114.0,
+                "W"
+              ],
+              [
+                "REB",
+                191.0,
+                180.0,
+                "W"
+              ],
+              [
+                "3PM",
+                74.0,
+                45.0,
+                "W"
+              ],
+              [
+                "FG%",
+                0.5295508274231678,
+                0.5015576323987538,
+                "W"
+              ],
+              [
+                "FT%",
+                0.7572815533980582,
+                0.7252747252747253,
+                "W"
+              ]
+            ],
+            "is_complete": true,
+            "is_live": false,
+            "is_tiebreak": false,
+            "espn_matched": true,
+            "label": "",
+            "week_label": ""
+          }
+        ],
+        "is_complete": true,
+        "is_two_week": false,
+        "week1_progress": null,
+        "week_label": "Week 20",
+        "duration_label": "1-week matchup"
+      },
+      {
+        "number": 2,
+        "weeks": [
+          21
+        ],
+        "matchups": [
+          {
+            "team_a_name": "Steve Blake's Sparring Partner",
+            "team_a_seed": 5,
+            "team_b_name": "Meatwood Flac",
+            "team_b_seed": 8,
+            "wins_a": 4,
+            "wins_b": 4,
+            "ties": 0,
+            "winner_name": "Steve Blake's Sparring Partner",
+            "loser_name": "Meatwood Flac",
+            "details": [
+              [
+                "PTS",
+                194.0,
+                188.0,
+                "W"
+              ],
+              [
+                "BLK",
+                3.0,
+                8.0,
+                "L"
+              ],
+              [
+                "STL",
+                11.0,
+                10.0,
+                "W"
+              ],
+              [
+                "AST",
+                35.0,
+                48.0,
+                "L"
+              ],
+              [
+                "REB",
+                57.0,
+                71.0,
+                "L"
+              ],
+              [
+                "3PM",
+                11.0,
+                21.0,
+                "L"
+              ],
+              [
+                "FG%",
+                0.503448275862069,
+                0.47297297297297297,
+                "W"
+              ],
+              [
+                "FT%",
+                0.8604651162790697,
+                0.7714285714285715,
+                "W"
+              ]
+            ],
+            "is_complete": false,
+            "is_live": true,
+            "is_tiebreak": true,
+            "espn_matched": false,
+            "label": "5th Place Semi",
+            "week_label": ""
+          },
+          {
+            "team_a_name": "Sam Perkins Restaurant",
+            "team_a_seed": 6,
+            "team_b_name": "You Can't Randle the Truth",
+            "team_b_seed": 7,
+            "wins_a": 3,
+            "wins_b": 5,
+            "ties": 0,
+            "winner_name": "You Can't Randle the Truth",
+            "loser_name": "Sam Perkins Restaurant",
+            "details": [
+              [
+                "PTS",
+                173.0,
+                205.0,
+                "L"
+              ],
+              [
+                "BLK",
+                9.0,
+                4.0,
+                "W"
+              ],
+              [
+                "STL",
+                8.0,
+                11.0,
+                "L"
+              ],
+              [
+                "AST",
+                46.0,
+                32.0,
+                "W"
+              ],
+              [
+                "REB",
+                65.0,
+                48.0,
+                "W"
+              ],
+              [
+                "3PM",
+                17.0,
+                23.0,
+                "L"
+              ],
+              [
+                "FG%",
+                0.44029850746268656,
+                0.5185185185185185,
+                "L"
+              ],
+              [
+                "FT%",
+                0.8837209302325582,
+                0.9333333333333333,
+                "L"
+              ]
+            ],
+            "is_complete": false,
+            "is_live": true,
+            "is_tiebreak": false,
+            "espn_matched": false,
+            "label": "5th Place Semi",
+            "week_label": ""
+          },
+          {
+            "team_a_name": "3-ballz in Simmer Sauce",
+            "team_a_seed": 12,
+            "team_b_name": "Day to Day",
+            "team_b_seed": 9,
+            "wins_a": 2,
+            "wins_b": 5,
+            "ties": 1,
+            "winner_name": "Day to Day",
+            "loser_name": "3-ballz in Simmer Sauce",
+            "details": [
+              [
+                "PTS",
+                79.0,
+                96.0,
+                "L"
+              ],
+              [
+                "BLK",
+                4.0,
+                6.0,
+                "L"
+              ],
+              [
+                "STL",
+                4.0,
+                4.0,
+                "T"
+              ],
+              [
+                "AST",
+                37.0,
+                27.0,
+                "W"
+              ],
+              [
+                "REB",
+                27.0,
+                55.0,
+                "L"
+              ],
+              [
+                "3PM",
+                6.0,
+                10.0,
+                "L"
+              ],
+              [
+                "FG%",
+                0.3972602739726027,
+                0.4578313253012048,
+                "L"
+              ],
+              [
+                "FT%",
+                0.75,
+                0.6666666666666666,
+                "W"
+              ]
+            ],
+            "is_complete": false,
+            "is_live": true,
+            "is_tiebreak": false,
+            "espn_matched": false,
+            "label": "9th Place Semi",
+            "week_label": ""
+          },
+          {
+            "team_a_name": "Theres 5 Dalen Terrys Out There",
+            "team_a_seed": 11,
+            "team_b_name": "ExKuz Me?",
+            "team_b_seed": 10,
+            "wins_a": 4,
+            "wins_b": 4,
+            "ties": 0,
+            "winner_name": "ExKuz Me?",
+            "loser_name": "Theres 5 Dalen Terrys Out There",
+            "details": [
+              [
+                "PTS",
+                146.0,
+                170.0,
+                "L"
+              ],
+              [
+                "BLK",
+                10.0,
+                3.0,
+                "W"
+              ],
+              [
+                "STL",
+                12.0,
+                10.0,
+                "W"
+              ],
+              [
+                "AST",
+                38.0,
+                33.0,
+                "W"
+              ],
+              [
+                "REB",
+                39.0,
+                49.0,
+                "L"
+              ],
+              [
+                "3PM",
+                7.0,
+                14.0,
+                "L"
+              ],
+              [
+                "FG%",
+                0.5,
+                0.5686274509803921,
+                "L"
+              ],
+              [
+                "FT%",
+                0.8918918918918919,
+                0.7142857142857143,
+                "W"
+              ]
+            ],
+            "is_complete": false,
+            "is_live": true,
+            "is_tiebreak": true,
+            "espn_matched": false,
+            "label": "9th Place Semi",
+            "week_label": ""
+          }
+        ],
+        "is_complete": false,
+        "is_two_week": false,
+        "week1_progress": null,
+        "week_label": "Week 21",
+        "duration_label": "1-week matchup"
+      }
+    ],
+    "consolation_start_week": 20
+  },
+  "cache_age": 0,
+  "league_id": 189630,
+  "season": "2025-26",
+  "last_updated": 1773843288
+}

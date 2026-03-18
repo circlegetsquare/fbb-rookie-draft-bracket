@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coach Norman Dale Memorial League Rookie Draft Bracket — {{ season }}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Coach Norman Dale Memorial League Rookie Draft Bracket</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500;600&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* Inline critical loader styles for instant display */
     .loading-overlay {
@@ -35,6 +37,7 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
   </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -48,11 +51,10 @@
     <div class="header-top">
       <div>
         <h1>Coach Norman Dale Memorial League <span>Rookie Draft Bracket</span></h1>
-        <p class="header-subtitle">{{ season }} Season &middot; Seeds 5–12</p>
+        <p class="header-subtitle" id="headerSubtitle">Loading...</p>
       </div>
       <div style="display:flex; align-items:center; gap:1rem;">
-        <span class="header-meta">League {{ league_id }}</span>
-        <button class="refresh-btn" id="refreshBtn">&#x21bb; Refresh</button>
+        <span class="header-meta" id="headerMeta">Loading...</span>
       </div>
     </div>
   </header>
@@ -70,7 +72,7 @@
   </div>
 
   <footer class="footer">
-    <span>ESPN League {{ league_id }} &middot; {{ season }}</span>
+    <span id="footerInfo">Loading...</span>
     <span id="cacheInfo">Loading...</span>
   </footer>
 
@@ -82,6 +84,17 @@
         return (val * 100).toFixed(2) + '%';
       }
       return Math.floor(val);
+    }
+
+    function formatTimeAgo(timestamp) {
+      const seconds = Math.floor(Date.now() / 1000) - timestamp;
+      if (seconds < 60) return `${seconds}s ago`;
+      const minutes = Math.floor(seconds / 60);
+      if (minutes < 60) return `${minutes}m ago`;
+      const hours = Math.floor(minutes / 60);
+      if (hours < 24) return `${hours}h ago`;
+      const days = Math.floor(hours / 24);
+      return `${days}d ago`;
     }
 
     function renderMatchup(m, rnd) {
@@ -218,7 +231,16 @@
     }
 
     function renderBracket(data) {
-      const { bracket, cache_age } = data;
+      const { bracket, league_id, season, last_updated } = data;
+
+      // Update header
+      document.getElementById('headerSubtitle').textContent = `${season} Season · Seeds 5–12`;
+      document.getElementById('headerMeta').textContent = `League ${league_id}`;
+      document.getElementById('footerInfo').textContent = `ESPN League ${league_id} · ${season}`;
+
+      // Update cache info
+      const timeAgo = formatTimeAgo(last_updated);
+      document.getElementById('cacheInfo').textContent = `Last updated ${timeAgo}`;
 
       // Render seed chips
       const seedingsEl = document.getElementById('seedings');
@@ -238,14 +260,11 @@
       renderRound(document.getElementById('round1'), r1, 1, 'Round 1', 'Week 20', '1-week matchup', 'Pending');
       renderRound(document.getElementById('round2'), r2, 2, 'Round 2', 'Week 21', '1-week matchup', 'Awaiting Round 1');
       renderRound(document.getElementById('round3'), r3, 3, 'Finals', 'Weeks 22-23', '2-week matchup', 'Awaiting Round 2');
-
-      // Update cache info
-      document.getElementById('cacheInfo').textContent = `Data cached ${cache_age}s ago · Auto-refreshes every 5 min`;
     }
 
-    async function loadData(endpoint) {
+    async function loadData() {
       try {
-        const res = await fetch(endpoint);
+        const res = await fetch('data.json');
         const data = await res.json();
         renderBracket(data);
         document.getElementById('loadingOverlay').classList.add('hidden');
@@ -256,16 +275,7 @@
     }
 
     // Initial load
-    loadData('/api/bracket');
-
-    // Refresh button
-    document.getElementById('refreshBtn').addEventListener('click', function() {
-      const overlay = document.getElementById('loadingOverlay');
-      document.getElementById('loadingText').textContent = 'Refreshing Data...';
-      overlay.classList.add('transparent');
-      overlay.classList.remove('hidden');
-      loadData('/api/refresh');
-    });
+    loadData();
 
     // Category toggle (delegated)
     document.addEventListener('click', function(e) {

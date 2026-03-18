@@ -1,0 +1,138 @@
+name: Sync ESPN Data
+
+on:
+  # Runs every 5 minutes during typical NBA game hours (6 PM - 1 AM ET)
+  # Cron is in UTC, so 6 PM ET = 11 PM UTC, 1 AM ET = 6 AM UTC
+  schedule:
+    # Every 5 minutes from 11 PM - 11:55 PM UTC (6 PM - 6:55 PM ET)
+    - cron: '*/5 23 * * *'
+    # Every 5 minutes from 12 AM - 5:55 AM UTC (7 PM ET - 12:55 AM ET)
+    - cron: '*/5 0-5 * * *'
+    # Every 2 hours outside game windows (6 AM - 10 PM UTC)
+    - cron: '0 6,8,10,12,14,16,18,20,22 * * *'
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+  # Also run on push to main (for initial setup)
+  push:
+    branches:
+      - main
+    paths:
+      - 'sync_data.py'
+      - 'bracket_data.py'
+      - 'espn_playoffs.py'
+      - '.github/workflows/sync.yml'
+
+jobs:
+  check-and-sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install espn-api python-dotenv requests
+
+      - name: Check if NBA games are active
+        id: nba-check
+        run: |
+          python3 << 'EOF'
+          import requests
+          from datetime import datetime, timezone
+          import os
+
+          def check_nba_games():
+              """Check if NBA games are currently active or scheduled today."""
+              today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+
+              try:
+                  # Use NBA API to check today's games
+                  url = f"https://cdn.nba.com/static/json/liveData/scoreboard/todaysScoreboard_00.json"
+                  resp = requests.get(url, timeout=10)
+
+                  if resp.status_code != 200:
+                      # If API fails, assume games might be on (fail open)
+                      return True, "API unavailable - assuming games active"
+
+                  data = resp.json()
+                  games = data.get('scoreboard', {}).get('games', [])
+
+                  if not games:
+                      return False, "No games scheduled today"
+
+                  # Check if any games are in progress or haven't ended
+                  active_games = []
+                  for game in games:
+                      status = game.get('gameStatus', 0)
+                      # 1 = scheduled, 2 = in progress, 3 = finished
+                      if status in [1, 2]:
+                          home = game.get('homeTeam', {}).get('teamTricode', '?')
+                          away = game.get('awayTeam', {}).get('teamTricode', '?')
+                          active_games.append(f"{away}@{home}")
+
+                  if active_games:
+                      return True, f"Active/upcoming: {', '.join(active_games[:3])}"
+
+                  return False, "All games finished"
+
+              except Exception as e:
+                  # Fail open - if we can't check, assume games might be on
+                  return True, f"Error checking: {str(e)}"
+
+          games_active, reason = check_nba_games()
+
+          # Get current hour in UTC
+          current_hour = datetime.now(timezone.utc).hour
+
+          # During off-peak hours (6-22 UTC), only sync if games are active
+          # During peak hours (23-5 UTC), always sync
+          is_peak_hours = current_hour >= 23 or current_hour < 6
+
+          should_sync = is_peak_hours or games_active
+
+          print(f"NBA check: {reason}")
+          print(f"Peak hours: {is_peak_hours}")
+          print(f"Should sync: {should_sync}")
+
+          # Write output for GitHub Actions
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write(f"should_sync={'true' if should_sync else 'false'}\n")
+              f.write(f"reason={reason}\n")
+          EOF
+
+      - name: Sync ESPN data
+        if: steps.nba-check.outputs.should_sync == 'true'
+        env:
+          ESPN_S2: ${{ secrets.ESPN_S2 }}
+          SWID: ${{ secrets.SWID }}
+        run: |
+          python3 sync_data.py
+
+      - name: Skip sync (no active games)
+        if: steps.nba-check.outputs.should_sync != 'true'
+        run: |
+          echo "Skipping sync: ${{ steps.nba-check.outputs.reason }}"
+
+      - name: Commit and push changes
+        if: steps.nba-check.outputs.should_sync == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data.json
+
+          # Only commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update bracket data - $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push
+          fi
