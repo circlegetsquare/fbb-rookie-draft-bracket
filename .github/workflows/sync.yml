@@ -24,6 +24,9 @@ on:
       - 'espn_playoffs.py'
       - '.github/workflows/sync.yml'
 
+permissions:
+  contents: write
+
 jobs:
   check-and-sync:
     runs-on: ubuntu-latest
