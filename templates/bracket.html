@@ -51,25 +51,26 @@
 
   {# Category detail expandable #}
   {% if m.details %}
+  {% set cat_order = ['FG%', 'FT%', '3PM', 'REB', 'AST', 'STL', 'BLK', 'PTS'] %}
+  {% set details_map = {} %}
+  {% for cat, score_a, score_b, result in m.details %}
+    {% set _ = details_map.update({cat: (score_a, score_b, result)}) %}
+  {% endfor %}
   <div class="cat-details">
-    {% for cat, score_a, score_b, result in m.details %}
-    {% set total = score_a + score_b if score_a + score_b > 0 else 1 %}
-    {% set pct_a = (score_a / total * 100)|round(1) %}
-    {% set pct_b = (score_b / total * 100)|round(1) %}
+    <div class="cat-header">
+      <div class="cat-header-spacer"></div>
+      <div class="cat-header-name">{{ m.team_a_name }}</div>
+      <div class="cat-header-name">{{ m.team_b_name }}</div>
+    </div>
+    {% for cat in cat_order %}
+    {% if cat in details_map %}
+    {% set score_a, score_b, result = details_map[cat] %}
     <div class="cat-row">
       <div class="cat-name">{{ cat }}</div>
-      <div class="cat-bar left">
-        <div class="cat-bar-fill {{ result|lower if result == 'W' else ('loss' if result == 'L' else 'tie') }}"
-             style="width: {{ pct_a }}%"></div>
-      </div>
-      <div class="cat-val">{{ '%.3f'|format(score_a) if cat in ['FG%', 'FT%'] else score_a|int }}</div>
-      <div class="cat-result {{ result }}">{{ result }}</div>
-      <div class="cat-val right">{{ '%.3f'|format(score_b) if cat in ['FG%', 'FT%'] else score_b|int }}</div>
-      <div class="cat-bar right">
-        <div class="cat-bar-fill {{ 'win' if result == 'L' else ('loss' if result == 'W' else 'tie') }}"
-             style="width: {{ pct_b }}%"></div>
-      </div>
+      <div class="cat-val {{ 'win' if result == 'W' else ('loss' if result == 'L' else 'tie') }}">{{ '%.2f%%'|format(score_a * 100) if cat in ['FG%', 'FT%'] else score_a|int }}</div>
+      <div class="cat-val {{ 'win' if result == 'L' else ('loss' if result == 'W' else 'tie') }}">{{ '%.2f%%'|format(score_b * 100) if cat in ['FG%', 'FT%'] else score_b|int }}</div>
     </div>
+    {% endif %}
     {% endfor %}
   </div>
   <button class="cat-toggle">Categories <span class="arrow">&#x25BC;</span></button>
