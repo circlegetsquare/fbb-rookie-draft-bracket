@@ -42,6 +42,26 @@ class MatchupResult:
             return "Pending"
         return f"{self.wins_a}-{self.wins_b}-{self.ties}"
 
+    def to_dict(self) -> dict:
+        return {
+            "team_a_name": self.team_a_name,
+            "team_a_seed": self.team_a_seed,
+            "team_b_name": self.team_b_name,
+            "team_b_seed": self.team_b_seed,
+            "wins_a": self.wins_a,
+            "wins_b": self.wins_b,
+            "ties": self.ties,
+            "winner_name": self.winner_name,
+            "loser_name": self.loser_name,
+            "details": self.details,
+            "is_complete": self.is_complete,
+            "is_live": self.is_live,
+            "is_tiebreak": self.is_tiebreak,
+            "espn_matched": self.espn_matched,
+            "label": self.label,
+            "week_label": self.week_label,
+        }
+
 
 @dataclass
 class BracketRound:
@@ -63,6 +83,18 @@ class BracketRound:
     def duration_label(self) -> str:
         return "2-week matchup" if self.is_two_week else "1-week matchup"
 
+    def to_dict(self) -> dict:
+        return {
+            "number": self.number,
+            "weeks": self.weeks,
+            "matchups": [m.to_dict() for m in self.matchups],
+            "is_complete": self.is_complete,
+            "is_two_week": self.is_two_week,
+            "week1_progress": [p.to_dict() for p in self.week1_progress] if self.week1_progress else None,
+            "week_label": self.week_label,
+            "duration_label": self.duration_label,
+        }
+
 
 @dataclass
 class TeamInfo:
@@ -76,12 +108,29 @@ class TeamInfo:
     def record(self) -> str:
         return f"{self.wins}-{self.losses}-{self.ties}"
 
+    def to_dict(self) -> dict:
+        return {
+            "name": self.name,
+            "seed": self.seed,
+            "wins": self.wins,
+            "losses": self.losses,
+            "ties": self.ties,
+            "record": self.record,
+        }
+
 
 @dataclass
 class BracketState:
     teams: list[TeamInfo]
     rounds: list[BracketRound]
     consolation_start_week: int
+
+    def to_dict(self) -> dict:
+        return {
+            "teams": [t.to_dict() for t in self.teams],
+            "rounds": [r.to_dict() for r in self.rounds],
+            "consolation_start_week": self.consolation_start_week,
+        }
 
 
 def _get_week_status(league: League, matchup_period: int, week_index: int) -> str:
