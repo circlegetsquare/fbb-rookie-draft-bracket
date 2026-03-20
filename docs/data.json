@@ -367,8 +367,8 @@
             "details": [
               [
                 "PTS",
-                354.0,
-                327.0,
+                366.0,
+                340.0,
                 "W"
               ],
               [
@@ -391,26 +391,26 @@
               ],
               [
                 "REB",
-                113.0,
-                124.0,
+                114.0,
+                126.0,
                 "L"
               ],
               [
                 "3PM",
-                27.0,
+                28.0,
                 29.0,
                 "L"
               ],
               [
                 "FG%",
-                0.5230769230769231,
-                0.4432234432234432,
+                0.5223880597014925,
+                0.450354609929078,
                 "W"
               ],
               [
                 "FT%",
-                0.859375,
-                0.8484848484848485,
+                0.8656716417910447,
+                0.8382352941176471,
                 "W"
               ]
             ],
@@ -426,17 +426,17 @@
             "team_a_seed": 6,
             "team_b_name": "You Can't Randle the Truth",
             "team_b_seed": 7,
-            "wins_a": 4,
-            "wins_b": 4,
+            "wins_a": 5,
+            "wins_b": 3,
             "ties": 0,
             "winner_name": "Sam Perkins Restaurant",
             "loser_name": "You Can't Randle the Truth",
             "details": [
               [
                 "PTS",
-                313.0,
+                333.0,
                 321.0,
-                "L"
+                "W"
               ],
               [
                 "BLK",
@@ -452,38 +452,38 @@
               ],
               [
                 "AST",
-                70.0,
+                77.0,
                 50.0,
                 "W"
               ],
               [
                 "REB",
-                102.0,
+                106.0,
                 81.0,
                 "W"
               ],
               [
                 "3PM",
-                31.0,
+                32.0,
                 30.0,
                 "W"
               ],
               [
                 "FG%",
-                0.4759825327510917,
+                0.4854771784232365,
                 0.4915254237288136,
                 "L"
               ],
               [
                 "FT%",
-                0.9014084507042254,
+                0.9054054054054054,
                 0.9076923076923077,
                 "L"
               ]
             ],
             "is_complete": false,
             "is_live": true,
-            "is_tiebreak": true,
+            "is_tiebreak": false,
             "espn_matched": false,
             "label": "5th Place Semi",
             "week_label": ""
@@ -493,8 +493,8 @@
             "team_a_seed": 12,
             "team_b_name": "Day to Day",
             "team_b_seed": 9,
-            "wins_a": 4,
-            "wins_b": 4,
+            "wins_a": 3,
+            "wins_b": 5,
             "ties": 0,
             "winner_name": "Day to Day",
             "loser_name": "3-ballz in Simmer Sauce",
@@ -502,43 +502,43 @@
               [
                 "PTS",
                 221.0,
-                220.0,
-                "W"
+                225.0,
+                "L"
               ],
               [
                 "BLK",
                 7.0,
-                8.0,
+                9.0,
                 "L"
               ],
               [
                 "STL",
                 9.0,
-                10.0,
+                11.0,
                 "L"
               ],
               [
                 "AST",
                 63.0,
-                55.0,
+                57.0,
                 "W"
               ],
               [
                 "REB",
                 78.0,
-                97.0,
+                104.0,
                 "L"
               ],
               [
                 "3PM",
                 14.0,
-                21.0,
+                22.0,
                 "L"
               ],
               [
                 "FG%",
                 0.5414012738853503,
-                0.49101796407185627,
+                0.48554913294797686,
                 "W"
               ],
               [
@@ -550,7 +550,7 @@
             ],
             "is_complete": false,
             "is_live": true,
-            "is_tiebreak": true,
+            "is_tiebreak": false,
             "espn_matched": false,
             "label": "9th Place Semi",
             "week_label": ""
@@ -635,5 +635,5 @@
   "cache_age": 0,
   "league_id": 189630,
   "season": "2025-26",
-  "last_updated": 1773977157
+  "last_updated": 1773980229
 }
