@@ -386,7 +386,7 @@
               [
                 "AST",
                 123.0,
-                124.0,
+                126.0,
                 "L"
               ],
               [
@@ -560,17 +560,17 @@
             "team_a_seed": 11,
             "team_b_name": "ExKuz Me?",
             "team_b_seed": 10,
-            "wins_a": 6,
+            "wins_a": 5,
             "wins_b": 2,
-            "ties": 0,
+            "ties": 1,
             "winner_name": "Theres 5 Dalen Terrys Out There",
             "loser_name": "ExKuz Me?",
             "details": [
               [
                 "PTS",
                 489.0,
-                487.0,
-                "W"
+                489.0,
+                "T"
               ],
               [
                 "BLK",
@@ -605,7 +605,7 @@
               [
                 "FG%",
                 0.4823848238482385,
-                0.5365079365079365,
+                0.5379746835443038,
                 "L"
               ],
               [
@@ -635,5 +635,5 @@
   "cache_age": 0,
   "league_id": 189630,
   "season": "2025-26",
-  "last_updated": 1774222292
+  "last_updated": 1774223134
 }
