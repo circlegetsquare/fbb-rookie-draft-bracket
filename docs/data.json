@@ -641,14 +641,63 @@
             "team_a_seed": 5,
             "team_b_name": "Sam Perkins Restaurant",
             "team_b_seed": 6,
-            "wins_a": null,
-            "wins_b": null,
-            "ties": null,
-            "winner_name": null,
-            "loser_name": null,
-            "details": [],
+            "wins_a": 3,
+            "wins_b": 5,
+            "ties": 0,
+            "winner_name": "Sam Perkins Restaurant",
+            "loser_name": "Steve Blake's Sparring Partner",
+            "details": [
+              [
+                "PTS",
+                127.0,
+                126.0,
+                "W"
+              ],
+              [
+                "BLK",
+                7.0,
+                10.0,
+                "L"
+              ],
+              [
+                "STL",
+                6.0,
+                8.0,
+                "L"
+              ],
+              [
+                "AST",
+                32.0,
+                19.0,
+                "W"
+              ],
+              [
+                "REB",
+                36.0,
+                38.0,
+                "L"
+              ],
+              [
+                "3PM",
+                15.0,
+                20.0,
+                "L"
+              ],
+              [
+                "FG%",
+                0.5154639175257731,
+                0.4421052631578947,
+                "W"
+              ],
+              [
+                "FT%",
+                0.75,
+                0.9166666666666666,
+                "L"
+              ]
+            ],
             "is_complete": false,
-            "is_live": false,
+            "is_live": true,
             "is_tiebreak": false,
             "espn_matched": true,
             "label": "5th Place Final",
@@ -659,14 +708,63 @@
             "team_a_seed": 8,
             "team_b_name": "You Can't Randle the Truth",
             "team_b_seed": 7,
-            "wins_a": null,
-            "wins_b": null,
-            "ties": null,
-            "winner_name": null,
-            "loser_name": null,
-            "details": [],
+            "wins_a": 2,
+            "wins_b": 6,
+            "ties": 0,
+            "winner_name": "You Can't Randle the Truth",
+            "loser_name": "Meatwood Flac",
+            "details": [
+              [
+                "PTS",
+                68.0,
+                154.0,
+                "L"
+              ],
+              [
+                "BLK",
+                7.0,
+                3.0,
+                "W"
+              ],
+              [
+                "STL",
+                6.0,
+                8.0,
+                "L"
+              ],
+              [
+                "AST",
+                20.0,
+                32.0,
+                "L"
+              ],
+              [
+                "REB",
+                33.0,
+                30.0,
+                "W"
+              ],
+              [
+                "3PM",
+                5.0,
+                21.0,
+                "L"
+              ],
+              [
+                "FG%",
+                0.43636363636363634,
+                0.5257731958762887,
+                "L"
+              ],
+              [
+                "FT%",
+                0.8823529411764706,
+                0.9393939393939394,
+                "L"
+              ]
+            ],
             "is_complete": false,
-            "is_live": false,
+            "is_live": true,
             "is_tiebreak": false,
             "espn_matched": true,
             "label": "7th Place Final",
@@ -677,14 +775,63 @@
             "team_a_seed": 9,
             "team_b_name": "Theres 5 Dalen Terrys Out There",
             "team_b_seed": 11,
-            "wins_a": null,
-            "wins_b": null,
-            "ties": null,
-            "winner_name": null,
-            "loser_name": null,
-            "details": [],
+            "wins_a": 5,
+            "wins_b": 2,
+            "ties": 1,
+            "winner_name": "Day to Day",
+            "loser_name": "Theres 5 Dalen Terrys Out There",
+            "details": [
+              [
+                "PTS",
+                90.0,
+                109.0,
+                "L"
+              ],
+              [
+                "BLK",
+                4.0,
+                3.0,
+                "W"
+              ],
+              [
+                "STL",
+                10.0,
+                6.0,
+                "W"
+              ],
+              [
+                "AST",
+                31.0,
+                26.0,
+                "W"
+              ],
+              [
+                "REB",
+                40.0,
+                21.0,
+                "W"
+              ],
+              [
+                "3PM",
+                9.0,
+                9.0,
+                "T"
+              ],
+              [
+                "FG%",
+                0.59375,
+                0.4625,
+                "W"
+              ],
+              [
+                "FT%",
+                0.7142857142857143,
+                0.9285714285714286,
+                "L"
+              ]
+            ],
             "is_complete": false,
-            "is_live": false,
+            "is_live": true,
             "is_tiebreak": false,
             "espn_matched": true,
             "label": "9th Place Final",
@@ -695,14 +842,63 @@
             "team_a_seed": 12,
             "team_b_name": "ExKuz Me?",
             "team_b_seed": 10,
-            "wins_a": null,
-            "wins_b": null,
-            "ties": null,
-            "winner_name": null,
-            "loser_name": null,
-            "details": [],
+            "wins_a": 4,
+            "wins_b": 2,
+            "ties": 2,
+            "winner_name": "3-ballz in Simmer Sauce",
+            "loser_name": "ExKuz Me?",
+            "details": [
+              [
+                "PTS",
+                101.0,
+                75.0,
+                "W"
+              ],
+              [
+                "BLK",
+                4.0,
+                2.0,
+                "W"
+              ],
+              [
+                "STL",
+                5.0,
+                5.0,
+                "T"
+              ],
+              [
+                "AST",
+                28.0,
+                28.0,
+                "T"
+              ],
+              [
+                "REB",
+                28.0,
+                20.0,
+                "W"
+              ],
+              [
+                "3PM",
+                7.0,
+                9.0,
+                "L"
+              ],
+              [
+                "FG%",
+                0.6296296296296297,
+                0.4426229508196721,
+                "W"
+              ],
+              [
+                "FT%",
+                0.7027027027027027,
+                0.8,
+                "L"
+              ]
+            ],
             "is_complete": false,
-            "is_live": false,
+            "is_live": true,
             "is_tiebreak": false,
             "espn_matched": true,
             "label": "11th Place Final",
@@ -711,7 +907,276 @@
         ],
         "is_complete": false,
         "is_two_week": true,
-        "week1_progress": null,
+        "week1_progress": [
+          {
+            "team_a_name": "Steve Blake's Sparring Partner",
+            "team_a_seed": 5,
+            "team_b_name": "Sam Perkins Restaurant",
+            "team_b_seed": 6,
+            "wins_a": 3,
+            "wins_b": 5,
+            "ties": 0,
+            "winner_name": null,
+            "loser_name": null,
+            "details": [
+              [
+                "PTS",
+                127.0,
+                126.0,
+                "W"
+              ],
+              [
+                "BLK",
+                7.0,
+                10.0,
+                "L"
+              ],
+              [
+                "STL",
+                6.0,
+                8.0,
+                "L"
+              ],
+              [
+                "AST",
+                32.0,
+                19.0,
+                "W"
+              ],
+              [
+                "REB",
+                36.0,
+                38.0,
+                "L"
+              ],
+              [
+                "3PM",
+                15.0,
+                20.0,
+                "L"
+              ],
+              [
+                "FG%",
+                0.5154639175257731,
+                0.4421052631578947,
+                "W"
+              ],
+              [
+                "FT%",
+                0.75,
+                0.9166666666666666,
+                "L"
+              ]
+            ],
+            "is_complete": false,
+            "is_live": false,
+            "is_tiebreak": false,
+            "espn_matched": true,
+            "label": "5th Place Final",
+            "week_label": "In progress"
+          },
+          {
+            "team_a_name": "Meatwood Flac",
+            "team_a_seed": 8,
+            "team_b_name": "You Can't Randle the Truth",
+            "team_b_seed": 7,
+            "wins_a": 2,
+            "wins_b": 6,
+            "ties": 0,
+            "winner_name": null,
+            "loser_name": null,
+            "details": [
+              [
+                "PTS",
+                68.0,
+                154.0,
+                "L"
+              ],
+              [
+                "BLK",
+                7.0,
+                3.0,
+                "W"
+              ],
+              [
+                "STL",
+                6.0,
+                8.0,
+                "L"
+              ],
+              [
+                "AST",
+                20.0,
+                32.0,
+                "L"
+              ],
+              [
+                "REB",
+                33.0,
+                30.0,
+                "W"
+              ],
+              [
+                "3PM",
+                5.0,
+                21.0,
+                "L"
+              ],
+              [
+                "FG%",
+                0.43636363636363634,
+                0.5257731958762887,
+                "L"
+              ],
+              [
+                "FT%",
+                0.8823529411764706,
+                0.9393939393939394,
+                "L"
+              ]
+            ],
+            "is_complete": false,
+            "is_live": false,
+            "is_tiebreak": false,
+            "espn_matched": true,
+            "label": "7th Place Final",
+            "week_label": "In progress"
+          },
+          {
+            "team_a_name": "Day to Day",
+            "team_a_seed": 9,
+            "team_b_name": "Theres 5 Dalen Terrys Out There",
+            "team_b_seed": 11,
+            "wins_a": 5,
+            "wins_b": 2,
+            "ties": 1,
+            "winner_name": null,
+            "loser_name": null,
+            "details": [
+              [
+                "PTS",
+                90.0,
+                109.0,
+                "L"
+              ],
+              [
+                "BLK",
+                4.0,
+                3.0,
+                "W"
+              ],
+              [
+                "STL",
+                10.0,
+                6.0,
+                "W"
+              ],
+              [
+                "AST",
+                31.0,
+                26.0,
+                "W"
+              ],
+              [
+                "REB",
+                40.0,
+                21.0,
+                "W"
+              ],
+              [
+                "3PM",
+                9.0,
+                9.0,
+                "T"
+              ],
+              [
+                "FG%",
+                0.59375,
+                0.4625,
+                "W"
+              ],
+              [
+                "FT%",
+                0.7142857142857143,
+                0.9285714285714286,
+                "L"
+              ]
+            ],
+            "is_complete": false,
+            "is_live": false,
+            "is_tiebreak": false,
+            "espn_matched": true,
+            "label": "9th Place Final",
+            "week_label": "In progress"
+          },
+          {
+            "team_a_name": "3-ballz in Simmer Sauce",
+            "team_a_seed": 12,
+            "team_b_name": "ExKuz Me?",
+            "team_b_seed": 10,
+            "wins_a": 4,
+            "wins_b": 2,
+            "ties": 2,
+            "winner_name": null,
+            "loser_name": null,
+            "details": [
+              [
+                "PTS",
+                101.0,
+                75.0,
+                "W"
+              ],
+              [
+                "BLK",
+                4.0,
+                2.0,
+                "W"
+              ],
+              [
+                "STL",
+                5.0,
+                5.0,
+                "T"
+              ],
+              [
+                "AST",
+                28.0,
+                28.0,
+                "T"
+              ],
+              [
+                "REB",
+                28.0,
+                20.0,
+                "W"
+              ],
+              [
+                "3PM",
+                7.0,
+                9.0,
+                "L"
+              ],
+              [
+                "FG%",
+                0.6296296296296297,
+                0.4426229508196721,
+                "W"
+              ],
+              [
+                "FT%",
+                0.7027027027027027,
+                0.8,
+                "L"
+              ]
+            ],
+            "is_complete": false,
+            "is_live": false,
+            "is_tiebreak": false,
+            "espn_matched": true,
+            "label": "11th Place Final",
+            "week_label": "In progress"
+          }
+        ],
         "week_label": "Weeks 22-23",
         "duration_label": "2-week matchup"
       }
@@ -721,5 +1186,5 @@
   "cache_age": 0,
   "league_id": 189630,
   "season": "2025-26",
-  "last_updated": 1774322423
+  "last_updated": 1774325392
 }
