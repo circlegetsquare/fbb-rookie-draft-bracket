@@ -148,6 +148,20 @@ def _get_week_status(league: League, matchup_period: int, week_index: int) -> st
     current_sp = get_current_daily_sp(league)
 
     if not daily_sps:
+        # ESPN may not have populated matchup_ids yet for this period.
+        # Estimate from the previous period's range.
+        prev_sps = get_daily_sp_range(league, matchup_period - 1)
+        if prev_sps and current_sp > prev_sps[-1]:
+            # We're past the previous period, so this one should be live.
+            # Estimate 14 daily SPs (2-week matchup) starting after prev.
+            estimated_start = prev_sps[-1] + 1
+            week_size = 7
+            week_start = estimated_start + (week_index * week_size)
+            week_end = week_start + week_size - 1
+            if current_sp > week_end:
+                return "complete"
+            elif current_sp >= week_start:
+                return "live"
         return "future"
 
     # Determine the daily SP boundary for this week_index
@@ -232,10 +246,11 @@ def _resolve_two_week_matchup(
     label: str = "",
     status: str = "future",
 ) -> tuple[MatchupResult, MatchupResult | None]:
-    """Resolve a two-week matchup using scoreboard data.
+    """Resolve a two-week matchup.
 
-    For Round 3, the ESPN matchup period aligns with our 2-week matchup,
-    so the scoreboard cumulative is exactly what we need.
+    Tries scoreboard cumulative data first. If ESPN hasn't populated it yet
+    (all zeros), falls back to aggregating player-level box scores from
+    the daily scoring periods.
     """
     result = MatchupResult(
         team_a_name=team_a.team_name,
@@ -252,6 +267,28 @@ def _resolve_two_week_matchup(
     stats_a = get_team_stats_for_week(league, matchup_period, team_a.team_name)
     stats_b = get_team_stats_for_week(league, matchup_period, team_b.team_name)
 
+    # ESPN sometimes returns all-zero scoreboard data for new matchup periods.
+    # Detect this and fall back to player-level box score aggregation.
+    def _has_real_scores(stats):
+        if not stats:
+            return False
+        return any(v["score"] != 0 for v in stats.values())
+
+    if not _has_real_scores(stats_a) or not _has_real_scores(stats_b):
+        # Estimate daily SPs from the previous matchup period
+        prev_sps = get_daily_sp_range(league, matchup_period - 1)
+        if prev_sps:
+            current_sp = get_current_daily_sp(league)
+            estimated_start = prev_sps[-1] + 1
+            active_sps = list(range(estimated_start, current_sp + 1))
+            if active_sps:
+                stats_a = get_team_stats_for_daily_range(
+                    league, matchup_period, active_sps, team_a.team_name
+                )
+                stats_b = get_team_stats_for_daily_range(
+                    league, matchup_period, active_sps, team_b.team_name
+                )
+
     if stats_a and stats_b:
         wa, wb, ties, details = compute_h2h(stats_a, stats_b)
         winner = determine_winner(team_a, team_b, wa, wb)
@@ -263,6 +300,7 @@ def _resolve_two_week_matchup(
         result.loser_name = (team_b if winner == team_a else team_a).team_name
         result.is_tiebreak = wa == wb
 
+        result.is_live = (status == "live")
         if status == "complete":
             result.is_complete = True
         else:
