@@ -641,58 +641,58 @@
             "team_a_seed": 5,
             "team_b_name": "Sam Perkins Restaurant",
             "team_b_seed": 6,
-            "wins_a": 3,
-            "wins_b": 4,
+            "wins_a": 2,
+            "wins_b": 5,
             "ties": 1,
             "winner_name": "Sam Perkins Restaurant",
             "loser_name": "Steve Blake's Sparring Partner",
             "details": [
               [
                 "PTS",
-                127.0,
-                126.0,
-                "W"
+                143.0,
+                158.0,
+                "L"
               ],
               [
                 "BLK",
                 7.0,
-                10.0,
+                11.0,
                 "L"
               ],
               [
                 "STL",
                 6.0,
-                8.0,
+                12.0,
                 "L"
               ],
               [
                 "AST",
                 32.0,
-                19.0,
+                24.0,
                 "W"
               ],
               [
                 "REB",
-                38.0,
-                38.0,
+                45.0,
+                45.0,
                 "T"
               ],
               [
                 "3PM",
-                15.0,
-                20.0,
+                16.0,
+                27.0,
                 "L"
               ],
               [
                 "FG%",
-                0.51020408,
-                0.44210526,
+                0.5,
+                0.43442623,
                 "W"
               ],
               [
                 "FT%",
                 0.75,
-                0.91666667,
+                0.92592593,
                 "L"
               ]
             ],
@@ -708,58 +708,58 @@
             "team_a_seed": 8,
             "team_b_name": "You Can't Randle the Truth",
             "team_b_seed": 7,
-            "wins_a": 2,
-            "wins_b": 6,
+            "wins_a": 3,
+            "wins_b": 5,
             "ties": 0,
             "winner_name": "You Can't Randle the Truth",
             "loser_name": "Meatwood Flac",
             "details": [
               [
                 "PTS",
-                68.0,
-                154.0,
+                132.0,
+                159.0,
                 "L"
               ],
               [
                 "BLK",
                 7.0,
-                3.0,
+                4.0,
                 "W"
               ],
               [
                 "STL",
-                6.0,
+                8.0,
                 9.0,
                 "L"
               ],
               [
                 "AST",
-                20.0,
-                32.0,
-                "L"
+                37.0,
+                35.0,
+                "W"
               ],
               [
                 "REB",
-                33.0,
-                32.0,
+                56.0,
+                37.0,
                 "W"
               ],
               [
                 "3PM",
-                5.0,
+                17.0,
                 21.0,
                 "L"
               ],
               [
                 "FG%",
-                0.43636364,
-                0.5257732,
+                0.45544554,
+                0.5047619,
                 "L"
               ],
               [
                 "FT%",
-                0.88235294,
-                0.93939394,
+                0.82142857,
+                0.94117647,
                 "L"
               ]
             ],
@@ -775,57 +775,57 @@
             "team_a_seed": 9,
             "team_b_name": "Theres 5 Dalen Terrys Out There",
             "team_b_seed": 11,
-            "wins_a": 5,
-            "wins_b": 2,
-            "ties": 1,
+            "wins_a": 7,
+            "wins_b": 1,
+            "ties": 0,
             "winner_name": "Day to Day",
             "loser_name": "Theres 5 Dalen Terrys Out There",
             "details": [
               [
                 "PTS",
-                92.0,
-                109.0,
-                "L"
+                141.0,
+                122.0,
+                "W"
               ],
               [
                 "BLK",
-                4.0,
+                5.0,
                 3.0,
                 "W"
               ],
               [
                 "STL",
-                10.0,
+                12.0,
                 6.0,
                 "W"
               ],
               [
                 "AST",
-                32.0,
-                28.0,
+                45.0,
+                29.0,
                 "W"
               ],
               [
                 "REB",
-                41.0,
-                22.0,
+                59.0,
+                25.0,
                 "W"
               ],
               [
                 "3PM",
-                9.0,
-                9.0,
-                "T"
+                12.0,
+                10.0,
+                "W"
               ],
               [
                 "FG%",
-                0.58461538,
-                0.45121951,
+                0.6344086,
+                0.4673913,
                 "W"
               ],
               [
                 "FT%",
-                0.77777778,
+                0.73333333,
                 0.92857143,
                 "L"
               ]
@@ -842,64 +842,64 @@
             "team_a_seed": 12,
             "team_b_name": "ExKuz Me?",
             "team_b_seed": 10,
-            "wins_a": 4,
-            "wins_b": 4,
+            "wins_a": 1,
+            "wins_b": 7,
             "ties": 0,
             "winner_name": "ExKuz Me?",
             "loser_name": "3-ballz in Simmer Sauce",
             "details": [
               [
                 "PTS",
-                101.0,
-                78.0,
-                "W"
+                122.0,
+                164.0,
+                "L"
               ],
               [
                 "BLK",
                 4.0,
-                2.0,
-                "W"
+                7.0,
+                "L"
               ],
               [
                 "STL",
-                5.0,
                 6.0,
+                9.0,
                 "L"
               ],
               [
                 "AST",
-                28.0,
-                29.0,
+                31.0,
+                46.0,
                 "L"
               ],
               [
                 "REB",
-                28.0,
-                21.0,
-                "W"
+                33.0,
+                40.0,
+                "L"
               ],
               [
                 "3PM",
-                7.0,
-                10.0,
+                12.0,
+                17.0,
                 "L"
               ],
               [
                 "FG%",
-                0.62962963,
-                0.4375,
+                0.57534247,
+                0.49565217,
                 "W"
               ],
               [
                 "FT%",
                 0.7027027,
-                0.8,
+                0.80487805,
                 "L"
               ]
             ],
             "is_complete": false,
             "is_live": true,
-            "is_tiebreak": true,
+            "is_tiebreak": false,
             "espn_matched": true,
             "label": "11th Place Final",
             "week_label": ""
@@ -913,58 +913,58 @@
             "team_a_seed": 5,
             "team_b_name": "Sam Perkins Restaurant",
             "team_b_seed": 6,
-            "wins_a": 3,
-            "wins_b": 4,
+            "wins_a": 2,
+            "wins_b": 5,
             "ties": 1,
             "winner_name": null,
             "loser_name": null,
             "details": [
               [
                 "PTS",
-                127.0,
-                126.0,
-                "W"
+                143.0,
+                158.0,
+                "L"
               ],
               [
                 "BLK",
                 7.0,
-                10.0,
+                11.0,
                 "L"
               ],
               [
                 "STL",
                 6.0,
-                8.0,
+                12.0,
                 "L"
               ],
               [
                 "AST",
                 32.0,
-                19.0,
+                24.0,
                 "W"
               ],
               [
                 "REB",
-                38.0,
-                38.0,
+                45.0,
+                45.0,
                 "T"
               ],
               [
                 "3PM",
-                15.0,
-                20.0,
+                16.0,
+                27.0,
                 "L"
               ],
               [
                 "FG%",
-                0.51020408,
-                0.44210526,
+                0.5,
+                0.43442623,
                 "W"
               ],
               [
                 "FT%",
                 0.75,
-                0.91666667,
+                0.92592593,
                 "L"
               ]
             ],
@@ -980,58 +980,58 @@
             "team_a_seed": 8,
             "team_b_name": "You Can't Randle the Truth",
             "team_b_seed": 7,
-            "wins_a": 2,
-            "wins_b": 6,
+            "wins_a": 3,
+            "wins_b": 5,
             "ties": 0,
             "winner_name": null,
             "loser_name": null,
             "details": [
               [
                 "PTS",
-                68.0,
-                154.0,
+                132.0,
+                159.0,
                 "L"
               ],
               [
                 "BLK",
                 7.0,
-                3.0,
+                4.0,
                 "W"
               ],
               [
                 "STL",
-                6.0,
+                8.0,
                 9.0,
                 "L"
               ],
               [
                 "AST",
-                20.0,
-                32.0,
-                "L"
+                37.0,
+                35.0,
+                "W"
               ],
               [
                 "REB",
-                33.0,
-                32.0,
+                56.0,
+                37.0,
                 "W"
               ],
               [
                 "3PM",
-                5.0,
+                17.0,
                 21.0,
                 "L"
               ],
               [
                 "FG%",
-                0.43636364,
-                0.5257732,
+                0.45544554,
+                0.5047619,
                 "L"
               ],
               [
                 "FT%",
-                0.88235294,
-                0.93939394,
+                0.82142857,
+                0.94117647,
                 "L"
               ]
             ],
@@ -1047,57 +1047,57 @@
             "team_a_seed": 9,
             "team_b_name": "Theres 5 Dalen Terrys Out There",
             "team_b_seed": 11,
-            "wins_a": 5,
-            "wins_b": 2,
-            "ties": 1,
+            "wins_a": 7,
+            "wins_b": 1,
+            "ties": 0,
             "winner_name": null,
             "loser_name": null,
             "details": [
               [
                 "PTS",
-                92.0,
-                109.0,
-                "L"
+                141.0,
+                122.0,
+                "W"
               ],
               [
                 "BLK",
-                4.0,
+                5.0,
                 3.0,
                 "W"
               ],
               [
                 "STL",
-                10.0,
+                12.0,
                 6.0,
                 "W"
               ],
               [
                 "AST",
-                32.0,
-                28.0,
+                45.0,
+                29.0,
                 "W"
               ],
               [
                 "REB",
-                41.0,
-                22.0,
+                59.0,
+                25.0,
                 "W"
               ],
               [
                 "3PM",
-                9.0,
-                9.0,
-                "T"
+                12.0,
+                10.0,
+                "W"
               ],
               [
                 "FG%",
-                0.58461538,
-                0.45121951,
+                0.6344086,
+                0.4673913,
                 "W"
               ],
               [
                 "FT%",
-                0.77777778,
+                0.73333333,
                 0.92857143,
                 "L"
               ]
@@ -1114,58 +1114,58 @@
             "team_a_seed": 12,
             "team_b_name": "ExKuz Me?",
             "team_b_seed": 10,
-            "wins_a": 4,
-            "wins_b": 4,
+            "wins_a": 1,
+            "wins_b": 7,
             "ties": 0,
             "winner_name": null,
             "loser_name": null,
             "details": [
               [
                 "PTS",
-                101.0,
-                78.0,
-                "W"
+                122.0,
+                164.0,
+                "L"
               ],
               [
                 "BLK",
                 4.0,
-                2.0,
-                "W"
+                7.0,
+                "L"
               ],
               [
                 "STL",
-                5.0,
                 6.0,
+                9.0,
                 "L"
               ],
               [
                 "AST",
-                28.0,
-                29.0,
+                31.0,
+                46.0,
                 "L"
               ],
               [
                 "REB",
-                28.0,
-                21.0,
-                "W"
+                33.0,
+                40.0,
+                "L"
               ],
               [
                 "3PM",
-                7.0,
-                10.0,
+                12.0,
+                17.0,
                 "L"
               ],
               [
                 "FG%",
-                0.62962963,
-                0.4375,
+                0.57534247,
+                0.49565217,
                 "W"
               ],
               [
                 "FT%",
                 0.7027027,
-                0.8,
+                0.80487805,
                 "L"
               ]
             ],
@@ -1186,5 +1186,5 @@
   "cache_age": 0,
   "league_id": 189630,
   "season": "2025-26",
-  "last_updated": 1774417313
+  "last_updated": 1774455981
 }
